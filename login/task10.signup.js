@@ -40,10 +40,9 @@ function login_btn() {
 
       flag = 1;
       break;
-    }else{
-      flag=0
+    } else {
+      flag = 0;
     }
-
 
     // lowercase letter
 
@@ -55,8 +54,8 @@ function login_btn() {
 
       flag = 1;
       break;
-    }else{
-      flag=0
+    } else {
+      flag = 0;
     }
 
     // uppercase letter
@@ -67,8 +66,8 @@ function login_btn() {
 
       flag = 1;
       break;
-    }else{
-      flag=0
+    } else {
+      flag = 0;
     }
 
     // Validate numbers
@@ -78,23 +77,25 @@ function login_btn() {
 
       flag = 1;
       break;
-    }else{
-      flag=0
+    } else {
+      flag = 0;
     }
 
     // Validate length
+    console.log(myInput.value.length);
+    if (myInput.value.length < 8) {
+      console.log(myInput.value.length);
 
-    if (!myInput.value.length >= 8) {
       alert("Password must be at least 8 characters long.");
       flag = 1;
       break;
-    }else{
-      flag=0
+    } else {
+      console.log(myInput.value.length);
+
+      flag = 0;
     }
 
     // flag===0 , true condition
-
-
   }
   if (flag === 0) {
     if (pass_value === con_pass_value && pass_value !== "") {
