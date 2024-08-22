@@ -1,0 +1,12 @@
+.searchbox{
+    width: 400px;
+    height: 600px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+#user_input{
+    height: 25px;
+}
