@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="task10.css">
 </head>
+
 <body>
     <div class="main_box">
         <div id="box1id" class="box1">
             <div id="display" class=" four_items">
                 <div class="username">
-                    <input type="email" oninput="fn_username()" id="username" placeholder="  Username">
+                    <input type="email"  id="username" placeholder="  Username">
                 </div>
                 <div class="password">
-                    <input type="password" oninput="fn_pass()" id="password" placeholder="  Password">
+                    <input type="password" id="password" placeholder="  Password">
                 </div>
                 <div class="password">
-                    <input type="password" oninput="fn_confirm_pass()" id="confirm_password" placeholder="  Confirm Password">
+                    <input type="password"  id="confirm_password"
+                        placeholder="  Confirm Password">
                 </div>
                 <div class="login">
                     <button onclick="login_btn()">SIGN UP</button>
-                    
+                    <!-- <button onclick="add_user()">Add another account</button> -->
+
                 </div>
                 <div class="forgot">
                     <a href="task10.html">Already have an account?</a>
@@ -33,4 +37,5 @@
 
     <script src="task10.signup.js"></script>
 </body>
+
 </html>
