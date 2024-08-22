@@ -31,8 +31,6 @@ function login_btn() {
   for (let i = 0; i < details.length; i++) {
     console.log(details[i].username);
 
-    
-
     // repeated username || existing username
 
     if (details[i].username === name_value) {
@@ -42,24 +40,61 @@ function login_btn() {
 
       flag = 1;
       break;
+    }else{
+      flag=0
     }
 
-    
 
+    // lowercase letter
 
+    var myInput = document.getElementById("password");
 
-    // check 8 letter
+    var lowerCaseLetters = /[a-z]/g;
+    if (!myInput.value.match(lowerCaseLetters)) {
+      alert("Password must contain at least one lowercase letter");
 
-    if (pass_value.length < 8) {
+      flag = 1;
+      break;
+    }else{
+      flag=0
+    }
+
+    // uppercase letter
+    var upperCaseLetters = /[A-Z]/g;
+
+    if (!myInput.value.match(upperCaseLetters)) {
+      alert("Password must contain at least one uppercase letter");
+
+      flag = 1;
+      break;
+    }else{
+      flag=0
+    }
+
+    // Validate numbers
+    var numbers = /[0-9]/g;
+    if (!myInput.value.match(numbers)) {
+      alert("Password must contain at least one number");
+
+      flag = 1;
+      break;
+    }else{
+      flag=0
+    }
+
+    // Validate length
+
+    if (!myInput.value.length >= 8) {
       alert("Password must be at least 8 characters long.");
       flag = 1;
       break;
+    }else{
+      flag=0
     }
 
-    
-
-
     // flag===0 , true condition
+
+
   }
   if (flag === 0) {
     if (pass_value === con_pass_value && pass_value !== "") {
@@ -102,6 +137,4 @@ function login_btn() {
       alert("The form is incomplete.");
     }
   }
-
-  
 }
