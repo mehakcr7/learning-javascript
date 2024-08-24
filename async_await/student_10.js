@@ -37,7 +37,9 @@ function searcher() {
 
       buttons[i].style.display = "block"; // Show the corresponding profile button
 
-      buttons[i].addEventListener("click", () => button_click(students[i]));
+      buttons[i].addEventListener("click", () => {
+        button_click(students[i]);
+      });
     } else {
       paragraphs[i].style.display = "none";
       buttons[i].style.display = "none"; // Hide non-matching names and buttons
@@ -54,11 +56,21 @@ function searcher() {
 // function to display searched student details
 
 function button_click(student) {
+  // to remove if there exist any profile
+  
+  var profile_info = document.createElement("div");
+  profile_info.id = "profile_info";
+
+  document.body.append(profile_info);
+
+  var existingProfileInfo = document.querySelector("#profile_info");
+  if (existingProfileInfo) {
+    existingProfileInfo.remove();
+  }
+
+  // select searchbox
   var searchbox = document.getElementById("searchbox");
   searchbox.style.display = "none";
-
-  var profile_info = document.createElement("div");
-  document.body.append(profile_info);
 
   // creating P tag for profile details
 
