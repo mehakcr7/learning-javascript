@@ -57,13 +57,13 @@ function searcher() {
 
 function button_click(student) {
   // to remove if there exist any profile
-  
+
+  var existingProfileInfo = document.querySelector("#profile_info");
   var profile_info = document.createElement("div");
   profile_info.id = "profile_info";
 
   document.body.append(profile_info);
 
-  var existingProfileInfo = document.querySelector("#profile_info");
   if (existingProfileInfo) {
     existingProfileInfo.remove();
   }
@@ -133,7 +133,7 @@ function button_click(student) {
 
 //
 
-//optimised solution
+// another solution
 
 //
 
