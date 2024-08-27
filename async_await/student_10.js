@@ -2,6 +2,7 @@ var students = []; // Initialize students array to be used later
 
 var fetchData = async () => {
   var response = await fetch("student.json");
+
   students = await response.json(); // Update global students variable
   var box = document.getElementById("box");
 
@@ -132,8 +133,15 @@ function button_click(student) {
 }
 
 //
+//
+//
+//
+//
 
 // another solution
+//
+//
+//
 
 //
 
