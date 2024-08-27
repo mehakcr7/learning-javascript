@@ -1,0 +1,102 @@
+/* Overall page styles */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7eaea;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Main container styles */
+  #main_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+  }
+  
+  /* Box styles - Grid for product listings */
+  #box {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Product card styles */
+  .box {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+  }
+  
+  .box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Product Title Styling */
+  p {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  /* Reduced Button styling */
+  button {
+    margin-top: 15px; /* Adds some space above the button */
+    padding: 8px 16px; /* Reduced padding for smaller button */
+    font-size: 0.9rem; /* Reduced font size */
+    font-weight: bold;
+    background-color: #ff6b6b;
+    height: 50px;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 120px; /* Slightly reduced width */
+  }
+  
+  button:hover {
+    background-color: #ff4757;
+    transform: scale(1.05);
+  }
+  
+  /* Product detail page styles */
+  .product-details {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-details img {
+    max-width: 100%;
+    margin-top: 20px;
+    border-radius: 15px;
+  }
+  
+  .product-details p {
+    font-size: 1.2rem;
+    color: #444;
+    margin: 15px 0;
+  }
+  
+  
