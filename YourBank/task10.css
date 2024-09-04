@@ -1,0 +1,117 @@
+/* Main container centering */
+
+body{
+  background-color: black;
+  background-image: url("images/Abstract\ Design\ \(1\).svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.main_box {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.main_heading{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Box container styling */
+.box1 {
+  width: 400px;
+  height: auto;
+  padding: 40px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  /* background-image: url("images/grid\ design.svg"); */
+  background-repeat: no-repeat;
+  background-size: cover; 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the input fields */
+.four_items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Input fields customization */
+.four_items input{
+  width: 300px;
+  height: 50px;
+  border-radius: 25px;
+  border: 1px solid #ced4da;
+  background-color: #f8f9fa;
+  font-size: 16px;
+  color: #495057;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.four_items input:focus {
+  border-color: #caff33;
+  box-shadow: 0 0 5px #caff33;
+  outline: none;
+}
+
+/* Button styling */
+.four_items button {
+  width: 100%;
+  height: 50px;
+  background-color: #caff33;
+  color: black;
+  font-size: 18px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 5.3s ease;
+}
+
+.four_items button:hover {
+  background-color: #a1d80b;
+  transform: scale(1.05);
+}
+
+/* Forgot and Sign-up link styling */
+.forgot a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.forgot a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Responsive design for smaller devices */
+/* @media (max-width: 768px) {
+    .box1 {
+        width: 90%;
+        padding: 20px;
+    }
+    
+    .four_items input,
+    .four_items button {
+        width: 100%;
+    }
+} */

@@ -1,23 +1,603 @@
-.nav_bar_main{
-    /* display: flex; */
-    /* justify-content: center; */
-    width: 100%;
+* {
+  padding: 0px;
+  margin: 0px;
+}
+body {
+  background-color: black;
+  background-image: url("images/Abstract\ Design\ \(1\).svg");
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+.blurred {
+  filter: blur(5px);
+}
+
+p {
+  color: white;
+}
+a {
+  color: white;
+}
+h1 {
+  color: white;
+}
+h2 {
+  color: white;
+}
+h3 {
+  color: white;
+}
+h4 {
+  color: white;
+}
+.nav_bar_main {
+  display: flex;
+  justify-content: center;
+  padding: 20px 20px;
+}
+.nav_bar {
+  width: 90%;
+  border: 2px solid black;
+  border-radius: 50px;
+  background-color: #171717;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.p1_home_to_login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav_bar_l2 {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.nav_bar_l3 {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.nav_bar_l1 {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75px;
+  height: 35px;
+  border-radius: 50px;
+  background: #caff33;
+}
+.login a {
+  color: black;
+}
+
+.nav_bar a {
+  text-decoration: none;
+}
+
+.nav_bar_l2 a:hover,
+.nav_bar_l3 a:not(.login a):hover {
+  padding: 10px;
+  border-radius: 50px;
+  color: black;
+  background: #caff33;
+}
+
+/* menu icon */
+
+#menu-icon {
+  display: none;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}
+.page2 {
+  padding-top: 67px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.page2_left_div_main {
+  width: 700px;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+
+  background-color: black;
+  height: 510px;
+}
+.page2_left_div {
+  width: 600px;
+  height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 20px;
+}
+.tick_icon {
+  border: 2px solid black;
+  border-radius: 20px;
+  height: 25px;
+  justify-content: center;
+  width: 275px;
+  gap: 5px;
+  display: flex;
+  align-items: center;
+}
+.financial_journey {
+  color: #caff33;
+}
+.get_started_btn button {
+  background-color: #caff33;
+  width: 100px;
+  border-radius: 50px;
+  height: 50px;
+}
+.get_started_btn :hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+.page2_right_div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 700px;
+  height: 550px;
+  background-color: black;
+}
+.plus_icon {
+  top: 20%;
+  left: 55%;
+  position: absolute;
+  width: 150px;
+  height: 55px;
+  border-radius: 10px;
+  z-index: 1;
+  background-color: #2d2c2c;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.plus_icon p {
+  font-size: 12px;
+}
+.p2_exchange_div {
+  position: relative;
+
+  box-shadow: rgb(213, 206, 206) 0px 0px 1px 0px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.p2_exchange_div svg {
+  height: 485px;
+}
+.supported_currency_main {
+  margin-top: 20px;
+  margin-left: 240px;
+}
+.supported_currency {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+
+  background-color: #2d2c2c;
+
+  border-radius: 50px;
+}
+.exchange_n_supported_currency {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.page3 {
+  padding-left: 100px;
+  padding-top: 50px;
+  /* position: relative; */
+}
+#services {
+  color: #caff33;
+}
+.our_services {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 25px;
+}
+.page3BankServices {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.deposit {
+  width: 360px;
+  box-shadow: 5px -4px 5px -8px #caff33;
+
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 30px;
+  padding-bottom: 100px;
+}
+.deposit :hover,
+.deposit svg :not(:hover) {
+  transform: scale(1.15);
+  cursor: pointer;
+}
+
+.page4 {
+  padding: 50px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.use_case h1 {
+  color: #caff33;
+}
+.use_case {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.p4_1st_row {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+.p4_left_div {
+  background-image: url(images/grid\ design.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  display: grid;
+  grid-template-rows: 150px 150px; /* 2 rows of equal height */
+  grid-template-columns: 250px 250px; /* 2 columns of equal width */
+  width: 45%;
+  height: 400px;
+  border: 1px solid rgb(37, 36, 36);
+  border-radius: 20px;
+  align-content: center;
+
+  gap: 10px;
+  justify-content: center;
+  padding-top: 15px;
+}
+
+.managing_personal {
+  background-color: #161616;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.managing_personal p {
+  width: 150px;
+
+  text-align: center;
+}
+.p4_right_div {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.p4_right_div h1 {
+  color: #caff33;
+}
+.p4_right_div p {
+  color: #b3b3b3;
+}
+.for_individuals {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+._78_percentage_main {
+  display: flex;
+  justify-content: space-between;
+}
+._78_percentage {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+._78_percentage p {
+  width: 150px;
+}
+.learn_more_btn {
+  width: 85px;
+  height: 40px;
+  border-radius: 50px;
+}
+
+.learn_more_btn:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+
+  border-radius: 50px;
+  color: black;
+  background: #caff33;
+}
+.last_page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #161616;
+}
+.last_page a {
+  color: rgb(194, 196, 197);
+  text-decoration: none;
+}
+.lastpage_yourbank {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: space-around;
+}
+.lastpage_navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.lastpage_contact_details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.lastpage_contact_details_email {
+  display: flex;
+  gap: 5px;
+}
+.facebook_page_main {
+  height: 150px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #171717;
+}
+.facebook_page_main p {
+  color: #b3b3b3;
+}
+
+.facebook_page {
+  height: 75px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 90%;
+  border-radius: 100px;
+  background-color: black;
+}
+.deposit_overlay_page_main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  top: 115%;
+  display: none;
+
 
 }
-.nav_bar{
+.deposit_overlay_page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 70%;
+  
+}
+.deposit_box_main{
+
+  background-color: #2d2c2c;
+  width: 400px;
+  padding: 40px;
+  border-radius: 10px; 
+}
+
+.deposit_box {
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.deposit_box input{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.deposit_box button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  padding: 10px;
+  background-color: #caff33; 
+  color: black;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+.deposit_box button:hover {
+  background-color: #27ae60; 
+}
+
+/* Responsiveness............................ */
+
+@media (max-width: 426px) {
+  #menu-icon {
+    display: block;
+  }
+  .page2 {
+    flex-direction: column;
+    padding: 0px 0px;
+    justify-content: center;
+    align-items: center;
+  }
+  .page2_left_div_main {
+    width: 350px;
+    height: 425px;
+  }
+  .page2_left_div {
+    width: 350px;
+  }
+  .page2_left_div h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .page2_left_div p {
+    text-align: center;
+  }
+  .exchange_n_supported_currency {
+    width: 425px;
+  }
+  .page2_right_div {
+    width: 425px;
+  }
+  .get_started_btn {
+    display: flex;
+    justify-content: center;
+  }
+  .plus_icon {
+    top: 88%;
+    left: 1%;
+  }
+  .exchange_n_supported_currency {
+    padding-top: 100px;
+  }
+  .p2_exchange_div {
+    width: 425px;
+    box-shadow: 0px 0px 0px 0px;
+  }
+  .supported_currency_main {
+    margin-left: 0px;
+  }
+
+  .nav_bar {
+    width: 100%;
+    padding: 0px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-}
-.nav_bar_l2{
-    display: flex;
-    gap: 20px;
-    align-items: center;
+  }
+  .nav_bar_l2 {
+    display: none;
+    flex-direction: column;
+  }
+  .nav_bar_l3 {
+    display: none;
 
-}
-.nav_bar_l3{
+    flex-direction: column;
+  }
+  .page3 {
+    padding-left: 0px;
+    padding-top: 100px;
     display: flex;
-    gap: 20px;
+    flex-direction: column;
     align-items: center;
+  }
+  .our_services {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .our_services p {
+    text-align: center;
+  }
+  .page3BankServices {
+    display: flex;
+    flex-direction: column;
+  }
+  .deposit {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    box-shadow: 0px 10px 5px -13px #caff33;
+  }
+  .page4 {
+    padding: 50px 0px;
+    text-align: center;
+  }
+  .p4_left_div {
+    display: grid;
+    grid-template-rows: 45% 45%; /* 2 rows of equal height */
+    grid-template-columns: 45% 45%; /* 2 columns of equal width */
+    width: 100%;
+    align-content: center;
 
+    justify-content: center;
+  }
+  .p4_1st_row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .p4_1st_row:nth-child(2) {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+  .p4_right_div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  ._78_percentage_main {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .p4_right_div {
+    align-items: center;
+  }
+  .facebook_page {
+    height: 150px;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 100%;
+  }
+  .last_page .nav_bar_l2 {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .lastpage_contact_details {
+    display: flex;
+    flex-direction: column;
+  }
 }
