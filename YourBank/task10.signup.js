@@ -1,3 +1,4 @@
+var account_number = document.getElementById("account_number");
 var username = document.getElementById("username");
 var pass_value = document.getElementById("password");
 var con_pass_value = document.getElementById("confirm_password");
@@ -7,6 +8,12 @@ var person = {};
 var flag = 0;
 
 function login_btn() {
+  //
+  var account_number_value =Math.floor((Math.random() * 10000) + 1);
+
+
+  person.account_number =account_number_value;
+  
   // username
   var name_value = username.value;
   person.username = name_value;

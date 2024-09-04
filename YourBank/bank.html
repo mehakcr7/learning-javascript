@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="bank.css" />
+    
   </head>
   <body>
     <div class="nav_bar_main">
       <div class="nav_bar">
-        <div class="nav_bar_l1">
+        <div id="yourbank" class="nav_bar_l1">
           <svg
             width="22"
             height="23"
@@ -57,10 +58,10 @@
           </div>
         </div>
         <div class="nav_bar_l3">
-          <div class="sign_up">
+          <div id="sign_up_bank" class="sign_up">
             <a href="task10signup.html">Sign Up</a>
           </div>
-          <div class="login">
+          <div id="login_bank" class="login">
             <a href="task10.html">Login</a>
           </div>
         </div>
@@ -734,7 +735,7 @@
           </svg>
           <p>Account Details</p>
         </div>
-        <div class="deposit">
+        <div onclick="balance_onclick()" class="deposit">
           <svg
             width="75"
             height="74"
@@ -1680,9 +1681,10 @@
       <div class="deposit_overlay_page">
         <div id="deposit_box_main" class="deposit_box_main">
           <div id="deposit_box" class="deposit_box">
-            <input type="number" placeholder="   Amount">
-            <input type="password" placeholder="   Password">
-            <button id="deposit_btn" >Deposit</button>
+            <input id="amount" type="number" placeholder="   Amount">
+            <input id="password" type="password" placeholder="   Password">
+            <div id="balance"></div>
+            <button  id="deposit_btn" >Deposit</button>
             <button id="withdraw_btn" >Withdraw</button>
             <button onclick="cancel_onclick()" id="cancel">Cancel</button>
     

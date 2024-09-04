@@ -26,21 +26,21 @@ function submitt() {
   for (let i = 0; i < person.length; i++) {
     var pass_value = person[i].password;
     var name_value = person[i].username;
+    var get_account = person[i].account_number;
+
     console.log(pass_value);
     console.log(name_value);
 
     if (name_value === get_username && pass_value === get_userpass) {
-      console.log("yes");
-      var element = document.getElementById("display");
-      var newelement = document.getElementById("box1id");
-      element.style.display = "none";
-      var newdiv = document.createElement("div");
-      newelement.append(newdiv);
-      newdiv.style.display = "flex";
-      newdiv.style.justifyContent = "center";
-      newdiv.style.alignItems = "center";
-      newdiv.style.height = "100%";
-      newdiv.innerHTML = "LOGIN SUCCESSFUL";
+      window.location.href = "bank.html";
+
+      var recent_data = {};
+      recent_data.recent_user = name_value;
+      recent_data.recent_password = pass_value;
+      recent_data.account = get_account;
+
+      const recent_data_JSON = JSON.stringify(recent_data);
+      localStorage.setItem("recentinfo", recent_data_JSON);
 
       flag = 1;
       break;
