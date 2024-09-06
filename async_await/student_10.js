@@ -56,7 +56,7 @@ function searcher() {
 
 // function to display searched student details
 
-function button_click(student) {
+function button_click(students) {
   // to remove if there exist any profile
 
   var existingProfileInfo = document.querySelector("#profile_info");
@@ -87,21 +87,21 @@ function button_click(student) {
 
   // Adding datas of student
 
-  students_info1.innerText = student.student_name;
-  students_info.innerText = student.collage_id;
+  students_info1.innerText = students.student_name;
+  students_info.innerText = students.collage_id;
 
-  students_info2.innerText = student.email_id;
-  students_info3.innerText = student.ph_no;
+  students_info2.innerText = students.email_id;
+  students_info3.innerText = students.ph_no;
 
-  students_info4.innerText = student.address.street_name;
-  students_info5.innerText = student.address.pin_no;
-  students_info5.innerText = student.address.house_no;
-  students_info6.innerText = student.address.country;
+  students_info4.innerText = students.address.street_name;
+  students_info5.innerText = students.address.pin_no;
+  students_info5.innerText = students.address.house_no;
+  students_info6.innerText = students.address.country;
 
-  students_info9.innerText = student.schoolarship;
+  students_info9.innerText = students.schoolarship;
 
   // to add subject mark and sub name
-  students_info7.innerText = student.sub.map(subject);
+  students_info7.innerText = students.sub.map(subject);
 
   function subject(item) {
     return `${item.sub_name}: ${item.sub_mark}`;

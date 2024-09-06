@@ -549,8 +549,8 @@
         </p>
       </div>
       <div id="page3BankServices" class="page3BankServices">
-        <div onclick="deposit_onclick()" id="deposit" class="deposit">
-          <svg
+        <div id="deposit" class="deposit">
+          <svg onclick="deposit_onclick()" 
             width="75"
             height="74"
             viewBox="0 0 75 74"
@@ -609,10 +609,10 @@
               </linearGradient>
             </defs>
           </svg>
-          <p>Desposit</p>
+          <p onclick="deposit_onclick()">Desposit</p>
         </div>
-        <div onclick="withdraw_onclick()" id="withdraw" class="deposit">
-          <svg
+        <div  id="withdraw" class="deposit">
+          <svg onclick="withdraw_onclick()"
             width="75"
             height="74"
             viewBox="0 0 75 74"
@@ -671,7 +671,7 @@
               </linearGradient>
             </defs>
           </svg>
-          <p>Withdraw</p>
+          <p onclick="withdraw_onclick()">Withdraw</p>
         </div>
         <div class="deposit">
           <svg
@@ -735,8 +735,8 @@
           </svg>
           <p>Account Details</p>
         </div>
-        <div onclick="balance_onclick()" class="deposit">
-          <svg
+        <div  class="deposit">
+          <svg onclick="balance_onclick()"
             width="75"
             height="74"
             viewBox="0 0 75 74"
@@ -795,7 +795,7 @@
               </linearGradient>
             </defs>
           </svg>
-          <p>View Balance</p>
+          <p onclick="balance_onclick()">View Balance</p>
         </div>
       </div>
     </div>

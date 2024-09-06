@@ -1,6 +1,8 @@
 //deposit main
 //
-var Balance = 0;
+var balance_amount = 1000;
+var balance = document.getElementById("balance");
+
 function deposit_onclick() {
   var deposit_overlay_page_main = document.getElementById(
     "deposit_overlay_page_main"
@@ -13,9 +15,9 @@ function deposit_onclick() {
   //
   //display
 
-  amount.style.display="flex"
-  password.style.display="flex"
-  balance.style.display='none'
+  amount.style.display = "flex";
+  password.style.display = "flex";
+  balance.style.display = "none";
 
   // Blur all elements except the overlay
   //
@@ -26,9 +28,14 @@ function deposit_onclick() {
       element.classList.add("blurred");
     });
 
+  // Remove any previous event listeners to prevent multiple triggers
+
+  var new_deposit_btn = deposit_btn.cloneNode(true);
+  deposit_btn.parentNode.replaceChild(new_deposit_btn, deposit_btn);
+
   // deposit btn event handler
   //
-  deposit_btn.addEventListener("click", () => {
+  new_deposit_btn.addEventListener("click", () => {
     var user_amount = document.getElementById("amount").value;
     var user_password = document.getElementById("password").value;
     console.log(user_amount);
@@ -37,16 +44,47 @@ function deposit_onclick() {
     var deposit_box = document.getElementById("deposit_box");
 
     deposit_box.style.display = "none";
+    var deposit_box_main = document.getElementById("deposit_box_main");
+    // to remove if there exist any profile
 
     var deposited_amount_div = document.createElement("div");
-    var deposit_box_main = document.getElementById("deposit_box_main");
+    var existingdepositbox = document.querySelector("#deposited_amount_div");
     deposit_box_main.append(deposited_amount_div);
+    deposited_amount_div.id = "deposited_amount_div";
+
+    if (existingdepositbox) {
+      existingdepositbox.remove();
+    }
+    //...............................................
+
+    // to add deposit in balance amount
+
+    balance_amount = parseInt(balance_amount) + parseInt(user_amount);
+    console.log(balance_amount);
+
+    //view balance and view balance button
+
     deposited_amount_div.classList.add("deposit_box");
     deposited_amount_div.innerText = user_amount + " Rupees Deposited";
     var deposited_amount_Button = document.createElement("button");
     deposited_amount_div.append(deposited_amount_Button);
     deposited_amount_Button.innerText = "View Balance";
     deposited_amount_Button.classList.add("deposit_box");
+
+    // view balance button function of deposit button
+    deposited_amount_Button.addEventListener("click", () => {
+      balance.innerText = "Balance : " + balance_amount;
+
+      // display none
+      amount.style.display = "none";
+      password.style.display = "none";
+      withdraw_btn.style.display = "none";
+      new_deposit_btn.style.display = "none";
+      balance.style.display = "flex";
+      deposited_amount_div.style.display = "none";
+
+      deposit_box.style.display = "flex";
+    });
   });
 }
 //Inside cancel button
@@ -71,10 +109,9 @@ function withdraw_onclick() {
 
   //display
 
-  amount.style.display="flex"
-  password.style.display="flex"
-  balance.style.display='none'
-
+  amount.style.display = "flex";
+  password.style.display = "flex";
+  balance.style.display = "none";
 
   deposit_btn.style.display = "none";
   withdraw_btn.style.display = "flex";
@@ -85,6 +122,64 @@ function withdraw_onclick() {
     .forEach((element) => {
       element.classList.add("blurred");
     });
+  // Remove any previous event listeners to prevent multiple triggers
+
+  var new_withdraw_btn = withdraw_btn.cloneNode(true);
+  deposit_btn.parentNode.replaceChild(new_withdraw_btn,withdraw_btn);
+
+  // withdraw function withdraw button function
+
+  new_withdraw_btn.addEventListener("click", () => {
+    var user_amount = document.getElementById("amount").value;
+    var user_password = document.getElementById("password").value;
+    console.log(user_amount);
+    console.log(user_password);
+
+    var deposit_box = document.getElementById("deposit_box");
+
+    deposit_box.style.display = "none";
+    var deposit_box_main = document.getElementById("deposit_box_main");
+    // to remove if there exist any profile
+
+    var deposited_amount_div = document.createElement("div");
+    var existingdepositbox = document.querySelector("#deposited_amount_div");
+    deposit_box_main.append(deposited_amount_div);
+    deposited_amount_div.id = "deposited_amount_div";
+
+    if (existingdepositbox) {
+      existingdepositbox.remove();
+    }
+    //...............................................
+
+    // to subtract withdraw in balance amount
+
+    balance_amount = parseInt(balance_amount) - parseInt(user_amount);
+    console.log(balance_amount);
+
+    //view balance
+
+    deposited_amount_div.classList.add("deposit_box");
+    deposited_amount_div.innerText = user_amount + " Rupees Debited";
+    var deposited_amount_Button = document.createElement("button");
+    deposited_amount_div.append(deposited_amount_Button);
+    deposited_amount_Button.innerText = "View Balance";
+    deposited_amount_Button.classList.add("deposit_box");
+
+    // view balance button function of deposit button
+    deposited_amount_Button.addEventListener("click", () => {
+      balance.innerText = "Balance : " + balance_amount;
+
+      // display none
+      amount.style.display = "none";
+      password.style.display = "none";
+      withdraw_btn.style.display = "none";
+      deposit_btn.style.display = "none";
+      balance.style.display = "flex";
+      deposited_amount_div.style.display = "none";
+
+      deposit_box.style.display = "flex";
+    });
+  });
 }
 
 //local stotage data fetching
@@ -124,17 +219,14 @@ function balance_onclick() {
   //
   //
   //
-  var balance = document.getElementById("balance");
-  balance.innerText ="Balance : "+ Balance  ;
+  balance.innerText = "Balance : " + balance_amount;
 
   // display none
-  amount.style.display="none"
-  password.style.display="none"
-  withdraw_btn.style.display="none"
-  deposit_btn.style.display="none"
-  balance.style.display='flex'
-
+  amount.style.display = "none";
+  password.style.display = "none";
+  withdraw_btn.style.display = "none";
+  deposit_btn.style.display = "none";
+  balance.style.display = "flex";
 
   deposit_box.style.display = "flex";
-
 }
