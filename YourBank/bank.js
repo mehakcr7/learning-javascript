@@ -108,6 +108,11 @@ function deposit_onclick() {
         console.log(person[i]);
         person[i].balance_amount = balance_amount;
 
+        recent_data_fetched.balance_amount = balance_amount;
+
+        const updated_recent_data = JSON.stringify(recent_data_fetched);
+        localStorage.setItem("recentinfo", updated_recent_data);
+
         const updated_data = JSON.stringify(person);
         localStorage.setItem("personinfo", updated_data);
       }
@@ -213,6 +218,11 @@ function withdraw_onclick() {
         console.log(person[i]);
         person[i].balance_amount = balance_amount;
 
+        recent_data_fetched.balance_amount = balance_amount;
+
+        const updated_recent_data = JSON.stringify(recent_data_fetched);
+        localStorage.setItem("recentinfo", updated_recent_data);
+
         const updated_data = JSON.stringify(person);
         localStorage.setItem("personinfo", updated_data);
       }
@@ -266,7 +276,7 @@ function account_details_onclick() {
   //
   balance.innerText = "Balance : " + balance_amount;
   account_number.innerText = "Account Number : " + recent_data_fetched.account;
-  email_id.innerText = "Email : : " + recent_data_fetched.recent_email;
+  email_id.innerText = "Email :  " + recent_data_fetched.recent_email;
 
   // display none
   amount.style.display = "none";
