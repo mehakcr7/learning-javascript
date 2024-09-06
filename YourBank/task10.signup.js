@@ -8,7 +8,7 @@ var person = {};
 var flag = 0;
 
 function login_btn() {
-  //
+  // random account number
   var account_number_value =Math.floor((Math.random() * 10000) + 1);
 
 
@@ -16,14 +16,19 @@ function login_btn() {
   
   // username
   var name_value = username.value;
-  person.username = name_value;
-
-  //confirm password
-  var con_pass_value = confirm_password.value;
-
+  person.email = name_value;
+  
   // password
   var pass_value = password.value;
   person.password = pass_value;
+  
+  //confirm password
+  var con_pass_value = confirm_password.value;
+
+  // Balance
+
+  var balance_amount = 0
+  person.balance_amount = balance_amount
 
   // pushing to array
 

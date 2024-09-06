@@ -1,6 +1,28 @@
+//local stotage data fetching
+//
+var recent_data = localStorage.getItem("recentinfo");
+var recent_data_fetched = JSON.parse(recent_data);
+
+if (recent_data) {
+  var sign_up_bank = document.getElementById("sign_up_bank");
+  sign_up_bank.innerText = "Welcome " + recent_data_fetched.recent_email;
+  sign_up_bank.style.color = "white";
+  var login_bank = document.getElementById("login_bank");
+  login_bank.innerHTML = "Log out";
+  login_bank.style.cursor = "pointer";
+  var yourbank = document.getElementById("yourbank");
+  var id_tag = document.createElement("h4");
+  yourbank.append(id_tag);
+  id_tag.innerText = "| ID : " + recent_data_fetched.account;
+  login_bank.addEventListener("click", () => {
+    window.location.href = "task10.html";
+  });
+}
+
 //deposit main
 //
-var balance_amount = 1000;
+console.log("bal " + recent_data_fetched.balance_amount);
+var balance_amount = recent_data_fetched.balance_amount;
 var balance = document.getElementById("balance");
 
 function deposit_onclick() {
@@ -70,6 +92,26 @@ function deposit_onclick() {
     deposited_amount_div.append(deposited_amount_Button);
     deposited_amount_Button.innerText = "View Balance";
     deposited_amount_Button.classList.add("deposit_box");
+    //
+    //
+    //retrieve data from localstorage for updating balance amount
+    console.log(recent_data_fetched.recent_email);
+    var stored_details = localStorage.getItem("personinfo");
+    if (stored_details) {
+      var person = JSON.parse(stored_details);
+    }
+
+    //store data to localstorage for updating balance amount
+
+    for (let i = 0; i < person.length; i++) {
+      if (person[i].email === recent_data_fetched.recent_email) {
+        console.log(person[i]);
+        person[i].balance_amount = balance_amount;
+
+        const updated_data = JSON.stringify(person);
+        localStorage.setItem("personinfo", updated_data);
+      }
+    }
 
     // view balance button function of deposit button
     deposited_amount_Button.addEventListener("click", () => {
@@ -108,7 +150,8 @@ function withdraw_onclick() {
   deposit_overlay_page_main.style.display = "flex";
 
   //display
-
+  account_number.style.display = "none";
+  email_id.style.display = "none";
   amount.style.display = "flex";
   password.style.display = "flex";
   balance.style.display = "none";
@@ -125,7 +168,7 @@ function withdraw_onclick() {
   // Remove any previous event listeners to prevent multiple triggers
 
   var new_withdraw_btn = withdraw_btn.cloneNode(true);
-  deposit_btn.parentNode.replaceChild(new_withdraw_btn,withdraw_btn);
+  deposit_btn.parentNode.replaceChild(new_withdraw_btn, withdraw_btn);
 
   // withdraw function withdraw button function
 
@@ -156,6 +199,25 @@ function withdraw_onclick() {
     balance_amount = parseInt(balance_amount) - parseInt(user_amount);
     console.log(balance_amount);
 
+    //retrieve data from localstorage for updating balance amount
+    console.log(recent_data_fetched.recent_email);
+    var stored_details = localStorage.getItem("personinfo");
+    if (stored_details) {
+      var person = JSON.parse(stored_details);
+    }
+
+    //store data to localstorage for updating balance amount
+
+    for (let i = 0; i < person.length; i++) {
+      if (person[i].email === recent_data_fetched.recent_email) {
+        console.log(person[i]);
+        person[i].balance_amount = balance_amount;
+
+        const updated_data = JSON.stringify(person);
+        localStorage.setItem("personinfo", updated_data);
+      }
+    }
+
     //view balance
 
     deposited_amount_div.classList.add("deposit_box");
@@ -170,6 +232,8 @@ function withdraw_onclick() {
       balance.innerText = "Balance : " + balance_amount;
 
       // display none
+      account_number.style.display = "none";
+      email_id.style.display = "none";
       amount.style.display = "none";
       password.style.display = "none";
       withdraw_btn.style.display = "none";
@@ -182,27 +246,41 @@ function withdraw_onclick() {
   });
 }
 
-//local stotage data fetching
-//
+//Account Details
 
-var recent_details = localStorage.getItem("recentinfo");
-if (recent_details) {
-  var recent_data_fetched = JSON.parse(recent_details);
-  var sign_up_bank = document.getElementById("sign_up_bank");
-  sign_up_bank.innerText = "Welcome " + recent_data_fetched.recent_user;
-  sign_up_bank.style.color = "white";
-  var login_bank = document.getElementById("login_bank");
-  login_bank.innerHTML = "Log out";
-  login_bank.style.cursor = "pointer";
-  var yourbank = document.getElementById("yourbank");
-  var id_tag = document.createElement("h4");
-  yourbank.append(id_tag);
-  id_tag.innerText = "| ID : " + recent_data_fetched.account;
-  login_bank.addEventListener("click", () => {
-    window.location.href = "task10.html";
-  });
+function account_details_onclick() {
+  var deposit_overlay_page_main = document.getElementById(
+    "deposit_overlay_page_main"
+  );
+  deposit_overlay_page_main.style.display = "flex";
+
+  //   Blur all elements except the overlay
+  document
+    .querySelectorAll("body > *:not(.deposit_overlay_page_main)")
+    .forEach((element) => {
+      element.classList.add("blurred");
+    });
+
+  //
+  //
+  //
+  balance.innerText = "Balance : " + balance_amount;
+  account_number.innerText = "Account Number : " + recent_data_fetched.account;
+  email_id.innerText = "Email : : " + recent_data_fetched.recent_email;
+
+  // display none
+  amount.style.display = "none";
+  account_number.style.display = "flex";
+  email_id.style.display = "flex";
+  password.style.display = "none";
+  withdraw_btn.style.display = "none";
+  deposit_btn.style.display = "none";
+  balance.style.display = "flex";
+
+  deposit_box.style.display = "flex";
 }
 
+// balance on click
 function balance_onclick() {
   var deposit_overlay_page_main = document.getElementById(
     "deposit_overlay_page_main"
@@ -222,6 +300,8 @@ function balance_onclick() {
   balance.innerText = "Balance : " + balance_amount;
 
   // display none
+  account_number.style.display = "none";
+  email_id.style.display = "none";
   amount.style.display = "none";
   password.style.display = "none";
   withdraw_btn.style.display = "none";

@@ -25,8 +25,9 @@ function submitt() {
 
   for (let i = 0; i < person.length; i++) {
     var pass_value = person[i].password;
-    var name_value = person[i].username;
+    var name_value = person[i].email;
     var get_account = person[i].account_number;
+    var get_balance_amount = person[i].balance_amount
 
     console.log(pass_value);
     console.log(name_value);
@@ -35,9 +36,10 @@ function submitt() {
       window.location.href = "bank.html";
 
       var recent_data = {};
-      recent_data.recent_user = name_value;
+      recent_data.recent_email = name_value;
       recent_data.recent_password = pass_value;
       recent_data.account = get_account;
+      recent_data.balance_amount =get_balance_amount
 
       const recent_data_JSON = JSON.stringify(recent_data);
       localStorage.setItem("recentinfo", recent_data_JSON);
