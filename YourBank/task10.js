@@ -28,6 +28,7 @@ function submitt() {
     var name_value = person[i].email;
     var get_account = person[i].account_number;
     var get_balance_amount = person[i].balance_amount
+    var get_transactions = person[i].transactions
 
     console.log(pass_value);
     console.log(name_value);
@@ -40,6 +41,7 @@ function submitt() {
       recent_data.recent_password = pass_value;
       recent_data.account = get_account;
       recent_data.balance_amount =get_balance_amount
+      recent_data.transactions = get_transactions
 
       const recent_data_JSON = JSON.stringify(recent_data);
       localStorage.setItem("recentinfo", recent_data_JSON);
