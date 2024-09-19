@@ -45,6 +45,8 @@ function deposit_onclick() {
   //display
 
   account_number.style.display = "none";
+  transfer_account_number.style.display = "none";
+
   email_id.style.display = "none";
   amount.style.display = "flex";
   password.style.display = "flex";
@@ -159,6 +161,7 @@ function deposit_onclick() {
         new_deposit_btn.style.display = "none";
         balance.style.display = "flex";
         table.style.display = "none";
+        transfer_account_number.style.display = "none";
 
         deposited_amount_div.style.display = "none";
         transaction_history_btn.style.display = "none";
@@ -198,6 +201,7 @@ function withdraw_onclick() {
   balance.style.display = "none";
   transaction_history_btn.style.display = "none";
   table.style.display = "none";
+  transfer_account_number.style.display = "none";
 
   deposit_btn.style.display = "none";
   withdraw_btn.style.display = "flex";
@@ -227,6 +231,8 @@ function withdraw_onclick() {
       // to remove if there exist any profile
 
       account_number.style.display = "none";
+      transfer_account_number.style.display = "none";
+
       email_id.style.display = "flex";
       email_id.innerText = "Insufficent Balance";
       amount.style.display = "flex";
@@ -363,6 +369,8 @@ function account_details_onclick() {
 
   // display none
   amount.style.display = "none";
+  transfer_account_number.style.display = "none";
+
   account_number.style.display = "flex";
   email_id.style.display = "flex";
   password.style.display = "none";
@@ -402,11 +410,8 @@ function transaction_history_btn_onclick() {
       table_head.appendChild(debitTh);
 
       table.appendChild(table_head);
-      
+
       for (let i = 0; i < transactions.length; i++) {
-        
-
-
         // Create a new row
 
         let table_row = document.createElement("tr");
@@ -454,18 +459,126 @@ function balance_onclick() {
   //
   //
   //
-  balance.innerText = "Balance : " + balance_amount;
 
   // display none
   account_number.style.display = "none";
+  transfer_account_number.style.display = "flex";
   email_id.style.display = "none";
-  amount.style.display = "none";
-  password.style.display = "none";
+  amount.style.display = "flex";
+  password.style.display = "flex";
   withdraw_btn.style.display = "none";
-  deposit_btn.style.display = "none";
-  balance.style.display = "flex";
+  deposit_btn.style.display = "flex";
+  balance.style.display = "none";
   transaction_history_btn.style.display = "none";
   table.style.display = "none";
 
   deposit_box.style.display = "flex";
+
+  // transfer account deposite btnnnnnnnnn........................
+
+  var new_deposit_btn = deposit_btn.cloneNode(true);
+  deposit_btn.parentNode.replaceChild(new_deposit_btn, deposit_btn);
+
+  // deposit btn event handler
+  //
+  new_deposit_btn.addEventListener("click", () => {
+    var user_amount = document.getElementById("amount").value;
+    // var user_account = document.getElementById("transfer_account_number").value;
+    var user_password = document.getElementById("password").value;
+
+    if (recent_data_fetched.recent_password === user_password) {
+      // date and time ////////////////////////////////////
+      const d = new Date();
+      const DateOnly = d.toLocaleDateString();
+      // transaction amount
+      var transaction_details = {
+        credit: "",
+        debit: user_amount,
+        date: DateOnly,
+      };
+
+      // Push the new transaction to the transactions array
+      transactions.push(transaction_details);
+
+      console.log(person);
+
+      var deposit_box = document.getElementById("deposit_box");
+
+      deposit_box.style.display = "none";
+      var deposit_box_main = document.getElementById("deposit_box_main");
+      // to remove if there exist any profile
+
+      var deposited_amount_div = document.createElement("div");
+      var existingdepositbox = document.querySelector("#deposited_amount_div");
+      deposit_box_main.append(deposited_amount_div);
+      deposited_amount_div.id = "deposited_amount_div";
+
+      if (existingdepositbox) {
+        existingdepositbox.remove();
+      }
+      //...............................................
+
+      // to add deposit in balance amount
+
+      balance_amount = parseInt(balance_amount) - parseInt(user_amount);
+      console.log(balance_amount);
+
+      //view balance and view balance button
+
+      deposited_amount_div.classList.add("deposit_box");
+      deposited_amount_div.innerText = user_amount + " Rupees Deposited";
+      var deposited_amount_Button = document.createElement("button");
+      deposited_amount_div.append(deposited_amount_Button);
+      deposited_amount_Button.innerText = "View Balance";
+      deposited_amount_Button.classList.add("deposit_box");
+      //
+      //
+      //retrieve data from localstorage for updating balance amount
+      var stored_details = localStorage.getItem("personinfo");
+      if (stored_details) {
+        var person = JSON.parse(stored_details);
+      }
+
+      //store data to localstorage for updating balance amount
+
+      for (let i = 0; i < person.length; i++) {
+        if (person[i].email === recent_data_fetched.recent_email) {
+          person[i].balance_amount = balance_amount;
+          // storing transaction details
+          person[i].transactions = transactions;
+
+          recent_data_fetched.transactions = transactions;
+
+          recent_data_fetched.balance_amount = balance_amount;
+
+          const updated_recent_data = JSON.stringify(recent_data_fetched);
+          localStorage.setItem("recentinfo", updated_recent_data);
+
+          const updated_data = JSON.stringify(person);
+          localStorage.setItem("personinfo", updated_data);
+        }
+      }
+
+      // view balance button function of deposit button
+      deposited_amount_Button.addEventListener("click", () => {
+        balance.innerText = "Balance : " + balance_amount;
+
+        // display none
+        amount.style.display = "none";
+        password.style.display = "none";
+        withdraw_btn.style.display = "none";
+        new_deposit_btn.style.display = "none";
+        balance.style.display = "flex";
+        table.style.display = "none";
+        transfer_account_number.style.display = "none";
+
+        deposited_amount_div.style.display = "none";
+        transaction_history_btn.style.display = "none";
+
+        deposit_box.style.display = "flex";
+      });
+    } else {
+      alert("Incorrect Password, Please Try Again");
+    }
+  });
 }
