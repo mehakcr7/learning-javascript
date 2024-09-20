@@ -6,7 +6,6 @@ var transaction_history_btn = document.getElementById(
   "transaction_history_btn"
 );
 var transactions = recent_data_fetched.transactions;
-console.log(transactions);
 
 var table = document.getElementById("table");
 
@@ -483,102 +482,119 @@ function balance_onclick() {
   //
   new_deposit_btn.addEventListener("click", () => {
     var user_amount = document.getElementById("amount").value;
-    // var user_account = document.getElementById("transfer_account_number").value;
+    var user_account = document.getElementById("transfer_account_number").value;
+    console.log(user_account);
     var user_password = document.getElementById("password").value;
+    let flag = 0;
 
-    if (recent_data_fetched.recent_password === user_password) {
-      // date and time ////////////////////////////////////
-      const d = new Date();
-      const DateOnly = d.toLocaleDateString();
-      // transaction amount
-      var transaction_details = {
-        credit: "",
-        debit: user_amount,
-        date: DateOnly,
-      };
+    //retrieve data from localstorage for updating balance amount
+    var stored_details = localStorage.getItem("personinfo");
+    if (stored_details) {
+      var person = JSON.parse(stored_details);
+    }
+    // user account number matching with localstorage account number
+    for (let i = 0; i < person.length; i++) {
+      // to check user account number is exist
+      if (user_account == person[i].account_number) {
+        flag = 0;
 
-      // Push the new transaction to the transactions array
-      transactions.push(transaction_details);
+        if (recent_data_fetched.recent_password == user_password) {
+          // date and time ////////////////////////////////////
+          const d = new Date();
+          const DateOnly = d.toLocaleDateString();
+          // transaction amount
+          var transaction_details = {
+            credit: "",
+            debit: user_amount,
+            date: DateOnly,
+          };
 
-      console.log(person);
+          // Push the new transaction to the transactions array
+          transactions.push(transaction_details);
 
-      var deposit_box = document.getElementById("deposit_box");
+          var deposit_box = document.getElementById("deposit_box");
 
-      deposit_box.style.display = "none";
-      var deposit_box_main = document.getElementById("deposit_box_main");
-      // to remove if there exist any profile
+          deposit_box.style.display = "none";
+          var deposit_box_main = document.getElementById("deposit_box_main");
+          // to remove if there exist any profile
 
-      var deposited_amount_div = document.createElement("div");
-      var existingdepositbox = document.querySelector("#deposited_amount_div");
-      deposit_box_main.append(deposited_amount_div);
-      deposited_amount_div.id = "deposited_amount_div";
+          var deposited_amount_div = document.createElement("div");
+          var existingdepositbox = document.querySelector(
+            "#deposited_amount_div"
+          );
+          deposit_box_main.append(deposited_amount_div);
+          deposited_amount_div.id = "deposited_amount_div";
 
-      if (existingdepositbox) {
-        existingdepositbox.remove();
-      }
-      //...............................................
+          if (existingdepositbox) {
+            existingdepositbox.remove();
+          }
+          //...............................................
 
-      // to add deposit in balance amount
+          // to add deposit in balance amount
 
-      balance_amount = parseInt(balance_amount) - parseInt(user_amount);
-      console.log(balance_amount);
+          balance_amount = parseInt(balance_amount) - parseInt(user_amount);
 
-      //view balance and view balance button
+          //view balance and view balance button
 
-      deposited_amount_div.classList.add("deposit_box");
-      deposited_amount_div.innerText = user_amount + " Rupees Deposited";
-      var deposited_amount_Button = document.createElement("button");
-      deposited_amount_div.append(deposited_amount_Button);
-      deposited_amount_Button.innerText = "View Balance";
-      deposited_amount_Button.classList.add("deposit_box");
-      //
-      //
-      //retrieve data from localstorage for updating balance amount
-      var stored_details = localStorage.getItem("personinfo");
-      if (stored_details) {
-        var person = JSON.parse(stored_details);
-      }
+          deposited_amount_div.classList.add("deposit_box");
+          deposited_amount_div.innerText = user_amount + " Rupees Deposited";
+          var deposited_amount_Button = document.createElement("button");
+          deposited_amount_div.append(deposited_amount_Button);
+          deposited_amount_Button.innerText = "View Balance";
+          deposited_amount_Button.classList.add("deposit_box");
+          //
+          //
 
-      //store data to localstorage for updating balance amount
+          //store data to localstorage for updating balance amount
 
-      for (let i = 0; i < person.length; i++) {
-        if (person[i].email === recent_data_fetched.recent_email) {
-          person[i].balance_amount = balance_amount;
-          // storing transaction details
-          person[i].transactions = transactions;
+          for (let i = 0; i < person.length; i++) {
+            if (person[i].email === recent_data_fetched.recent_email) {
+              person[i].balance_amount = balance_amount;
+              // storing transaction details
+              person[i].transactions = transactions;
 
-          recent_data_fetched.transactions = transactions;
+              recent_data_fetched.transactions = transactions;
 
-          recent_data_fetched.balance_amount = balance_amount;
+              recent_data_fetched.balance_amount = balance_amount;
 
-          const updated_recent_data = JSON.stringify(recent_data_fetched);
-          localStorage.setItem("recentinfo", updated_recent_data);
+              const updated_recent_data = JSON.stringify(recent_data_fetched);
+              localStorage.setItem("recentinfo", updated_recent_data);
 
-          const updated_data = JSON.stringify(person);
-          localStorage.setItem("personinfo", updated_data);
+              const updated_data = JSON.stringify(person);
+              localStorage.setItem("personinfo", updated_data);
+            }
+          }
+
+          // view balance button function of deposit button
+          deposited_amount_Button.addEventListener("click", () => {
+            balance.innerText = "Balance : " + balance_amount;
+
+            // display none
+            amount.style.display = "none";
+            password.style.display = "none";
+            withdraw_btn.style.display = "none";
+            new_deposit_btn.style.display = "none";
+            balance.style.display = "flex";
+            table.style.display = "none";
+            transfer_account_number.style.display = "none";
+
+            deposited_amount_div.style.display = "none";
+            transaction_history_btn.style.display = "none";
+
+            deposit_box.style.display = "flex";
+          });
+        } else {
+          alert("Incorrect Password, Please Try Again");
         }
+
+        break;
+      } else {
+        flag = 1;
       }
-
-      // view balance button function of deposit button
-      deposited_amount_Button.addEventListener("click", () => {
-        balance.innerText = "Balance : " + balance_amount;
-
-        // display none
-        amount.style.display = "none";
-        password.style.display = "none";
-        withdraw_btn.style.display = "none";
-        new_deposit_btn.style.display = "none";
-        balance.style.display = "flex";
-        table.style.display = "none";
-        transfer_account_number.style.display = "none";
-
-        deposited_amount_div.style.display = "none";
-        transaction_history_btn.style.display = "none";
-
-        deposit_box.style.display = "flex";
-      });
-    } else {
-      alert("Incorrect Password, Please Try Again");
+    }
+    // if account number doesn't exist 
+    if (flag == 1) {
+      alert("invalid Account Number");
     }
   });
 }
