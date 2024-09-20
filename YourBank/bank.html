@@ -795,7 +795,7 @@
               </linearGradient>
             </defs>
           </svg>
-          <p onclick="balance_onclick()">Transfer amount</p>
+          <p onclick="balance_onclick()">Bank Transfer </p>
         </div>
       </div>
     </div>
@@ -1681,6 +1681,11 @@
       <div class="deposit_overlay_page">
         <div id="deposit_box_main" class="deposit_box_main">
           <div id="deposit_box" class="deposit_box">
+            <h1 class="transaction_heading" id="transaction_heading"></h1>
+            <table id="table">
+  
+              
+            </table>
             <input id="transfer_account_number" type="number" placeholder="   Account Number">
             <input id="amount" type="number" placeholder="   Amount">
             <input id="password" type="password" placeholder="   Password">
@@ -1690,20 +1695,9 @@
             <button  id="deposit_btn" >Deposit</button>
             <button id="withdraw_btn" >Withdraw</button>
             <button onclick="transaction_history_btn_onclick()" id="transaction_history_btn" >Transaction History</button>
-            <button onclick="cancel_onclick()" id="cancel">Cancel</button>
+            <button onclick="cancel_onclick()" id="cancel">Close</button>
     
           </div>
-          <table id="table">
-            <!-- <tr>
-              <th>Time</th>
-              <th>Credit</th>
-              <th>Debit</th>
-            </tr> -->
-
-           
-            
-            
-          </table>
           
         </div>
       </div>

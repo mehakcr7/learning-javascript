@@ -13,19 +13,27 @@ table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  
 }
 
-td, th {
+td {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  color: rgb(238, 235, 235);
+}
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  /* background-color: #dddddd; */
+  /* color: black; */
 }
 tr:nth-child(odd) {
-  background-color: #a9a1a1;
+  /* background-color: #868585; */
 }
 /* table */
 .blurred {
@@ -423,6 +431,10 @@ h4 {
   display: none;
 
 
+}
+.transaction_heading{
+  color: #caff33;
+  display: none;
 }
 .deposit_overlay_page {
   display: flex;
