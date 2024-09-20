@@ -497,8 +497,32 @@ function balance_onclick() {
       // to check user account number is exist
       if (user_account == person[i].account_number) {
         flag = 0;
+        //insufficent balance
 
-        if (recent_data_fetched.recent_password == user_password) {
+        if (recent_data_fetched.balance_amount < user_amount) {
+          var deposit_box = document.getElementById("deposit_box");
+
+          var deposit_box_main = document.getElementById("deposit_box_main");
+          // to remove if there exist any profile
+
+          account_number.style.display = "none";
+          transfer_account_number.style.display = "flex";
+
+          email_id.style.display = "flex";
+          email_id.innerText = "Insufficent Balance";
+          amount.style.display = "flex";
+          password.style.display = "flex";
+          withdraw_btn.style.display = "none";
+          deposit_btn.style.display = "flex";
+          balance.style.display = "none";
+          deposited_amount_div.style.display = "none";
+          transaction_history_btn.style.display = "none";
+          table.style.display = "none";
+
+          deposit_box.style.display = "none";
+        }
+        // suffiecient balance
+         else if (recent_data_fetched.recent_password == user_password) {
           person[i].balance_amount =
             parseInt(person[i].balance_amount) + parseInt(user_amount);
           // date and time ////////////////////////////////////
