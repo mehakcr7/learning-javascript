@@ -499,6 +499,8 @@ function balance_onclick() {
         flag = 0;
 
         if (recent_data_fetched.recent_password == user_password) {
+          person[i].balance_amount =
+            parseInt(person[i].balance_amount) + parseInt(user_amount);
           // date and time ////////////////////////////////////
           const d = new Date();
           const DateOnly = d.toLocaleDateString();
@@ -592,7 +594,7 @@ function balance_onclick() {
         flag = 1;
       }
     }
-    // if account number doesn't exist 
+    // if account number doesn't exist
     if (flag == 1) {
       alert("invalid Account Number");
     }
