@@ -8,6 +8,7 @@ body {
   background-repeat: no-repeat;
   background-size: auto;
 }
+
 /* table */
 table {
   font-family: arial, sans-serif;
@@ -28,13 +29,7 @@ th {
   color: rgb(238, 235, 235);
 }
 
-tr:nth-child(even) {
-  /* background-color: #dddddd; */
-  /* color: black; */
-}
-tr:nth-child(odd) {
-  /* background-color: #868585; */
-}
+
 /* table */
 .blurred {
   filter: blur(5px);
